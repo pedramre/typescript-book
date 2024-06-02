@@ -1,26 +1,27 @@
-# Why TypeScript
-There are two main goals of TypeScript:
-* Provide an *optional type system* for JavaScript.
-* Provide planned features from future JavaScript editions to current JavaScript engines
+# چرا تایپ اسکریپت
+دو هدف اصلی در تایپ اسکریپت وجود دارد:
+* ارائه یک *سیستم تایپ دهی اختیاری* برای جاوا اسکریپت.
+* ارائه یک سری ویژگی برنامه ریزی شده از نسخه های بعدی جاوا اسکریپت به انجین های فعلی جاوا اسکریپت
 
-The desire for these goals is motivated below.
+برخی اهداف دیگر برای استفاده از تایپ اسکریپت
 
-## The TypeScript type system
+## سیستم تایپ در تایپ اسکریپت
 
-You might be wondering "**Why add types to JavaScript?**"
+ممکنه واسه شما سوال (جالب) باشه که "**چرا تایپ ها به جاوااسکریپت اضافه می شوند؟**"
 
-Types have proven ability to enhance code quality and understandability. Large teams (Google, Microsoft, Facebook) have continually arrived at this conclusion. Specifically:
+تایپ ها قابلیتی را به کدهای شما اضافه میکنند که با کیفیت تر و قابل فهم تر شوند. همانظور که تیم های بزرگ مثل (Google, Microsoft, Facebook) از سیستم تایپ ها در حال استفاده هستند. به طور خاص:
 
-* Types increase your agility when doing refactoring. *It's better for the compiler to catch errors than to have things fail at runtime*.
-* Types are one of the best forms of documentation you can have. *The function signature is a theorem and the function body is the proof*.
+* تایپ ها چابکی و سرعت شما را هنگام ریفکتور کردن کدها افزایش می دهد. *این بهتر هست که کامپایلر خطاها را تشخیص بده تا اینکه پروژه هنگام اجرا به مشکل بخورد*.
+* یکی از بهترین فرم هایی که برای داکیومنت کردن میتونید داشته باشید تایپ ها هستند. *ورودی ها و تایپ ورودی ها و اینکه به چه شکلی در تابع استفاده می شوند*.
 
-However, types have a way of being unnecessarily ceremonious. TypeScript is very particular about keeping the barrier to entry as low as possible. Here's how:
+با این حال استفاده از تایپ ها در پروژه ضروری نمی باشد اما تایپ اسکریپت کمک می کنه که تا حد ممکن مشکلات و خطاها را در سطح پایینی نگه داریم. در ادامه میگیم به چه شکلی:
 
-### Your JavaScript is TypeScript
-TypeScript provides compile time type safety for your JavaScript code. This is no surprise given its name. The great thing is that the types are completely optional. Your JavaScript code `.js` file can be renamed to a `.ts` file and TypeScript will still give you back valid `.js` equivalent to the original JavaScript file. TypeScript is *intentionally* and strictly a superset of JavaScript with optional Type checking.
+### جاوااسکریپت شما همان تایپ اسکریپت است
+تایپ اسکریپت موقع کامپل کدهای جاوا اسکریپت باعث می شود که بررسی کند تایپ متغیرها یا توابع خطایی نداشته باشند. همانطور که از اسم آن مشخص هست این چیز تعجب آوری نیست. بزرگترین چیز این است که تایپ ها کاملا اختیاری می باشند. فایل جاوا اسکریپت شما `.js` میتونه به `.ts` تغییر نام پیدا کنه و همچنان تمام دستورهایی که در فایل `.js` داشتید را بدون مشکل متوجه بشه و اجرا کنه. تایپ اسکریپت *از پیش طراحی شده* و یک مجموعه بزرگتری از جاوا اسکریپت با قابلیت چک کردن تایپ ها می باشد.
 
-### Types can be Implicit
-TypeScript will try to infer as much of the type information as it can in order to give you type safety with minimal cost of productivity during code development. For example, in the following example TypeScript will know that foo is of type `number` below and will give an error on the second line as shown:
+### تایپ ها می توانند ضمنی باشند
+تایپ اسکریپت سعی می کند تا جایی که امکان دارد انواع تایپ ها را شناسایی کند و با کمترین هزینه در طول توسعه پروژه از آن ها در برابر تغییر تایپ محافظت کند.
+برای مثال در تکه کد پایین تایپ اسکریپت می داند که تایپ foo از نوع `number` است و در خط بعدی خطا می دهد:
 
 ```ts
 var foo = 123;
@@ -28,29 +29,29 @@ foo = '456'; // Error: cannot assign `string` to `number`
 
 // Is foo a number or a string?
 ```
-This type inference is well motivated. If you do stuff like shown in this example, then, in the rest of your code, you cannot be certain that `foo` is a `number` or a `string`. Such issues turn up often in large multi-file code bases. We will deep dive into the type inference rules later.
+این مدل از اینترفیس صرفا برای مثال بالا کارایی دارد. اگر شما بخوایند شبیه به مثال بالا کد بزنید, در ادامه توسعه پروژه ممکنه دچار مشکل بشید که  `foo` از نوع `number` یا `string` بوده است. این چنین موضوع ها در پروژه های بزرگ که از فایل های مختلفی ساخته شده اند بیشتر خودش را نمایان می کند.تا همینجا را فعلا یاد بگیرید تا بعدا در مفاهیم اینترفیس ها عمیق تر بشیم.
 
-### Types can be Explicit
-As we've mentioned before, TypeScript will infer as much as it can safely. However, you can use annotations to:
+### تایپ ها می توانند واضح باشند
+همانطور که قبلا توضیح دادیم, تایپ اسکریپت میتواند تا جایی که امکان دارد انواع تایپ ها را شناسایی کند. اگر چه شما می توانید از (حاشیه نویسی) annotations نیز استفاده کنید:
 
-1. Help along the compiler, and more importantly document stuff for the next developer who has to read your code (that might be future you!).
-1. Enforce that what the compiler sees, is what you thought it should see. That is your understanding of the code matches an algorithmic analysis of the code (done by the compiler).
+1. این به کامپایلر کمک میکند, همچنین یک داکیومنت خیلی مهم برای توسعه دهندگان بعدی که میخواهند کد شما را بخوانند می باشد.
+2. با اینکار شما کامپایلر را مجبور میکنید که چیزی که شما دقیقا مدنظرتان هست را ببیند. یعنی درک شما از کد با تحلیل الگوریتمی کد مطابقت دارد (کاری که توسط کامپایلر انجام می شود).
 
-TypeScript uses postfix type annotations popular in other *optionally* annotated languages (e.g. ActionScript and F#).
+تایپ اسکریپت از postfix annotations که در دیگر زبان ها نیز محبوب است استفاده میکند (مثل ActionScript and F#).
 
 ```ts
 var foo: number = 123;
 ```
-So if you do something wrong the compiler will report an error e.g.:
+اگر شما مقدار اشتباهی را به foo نسبت دهید، کامپایلر به شما خطا می دهد.
 
 ```ts
 var foo: number = '123'; // Error: cannot assign a `string` to a `number`
 ```
 
-We will discuss all the details of all the annotation syntax supported by TypeScript in a later chapter.
+ما درباره جزئیات سینتکس های annotation که تایپ اسکریپت استفاده میکند در درس های بعد صحبت میکنیم.
 
-### Types are structural
-In some languages (specifically nominally typed ones) static typing results in unnecessary ceremony because even though *you know* that the code will work fine the language semantics force you to copy stuff around. This is why stuff like [automapper for C#](http://automapper.org/) is *vital* for C#. In TypeScript because we really want it to be easy for JavaScript developers with a minimum cognitive overload, types are *structural*. This means that *duck typing* is a first class language construct. Consider the following example. The function `iTakePoint2D` will accept anything that contains all the things (`x` and `y`) it expects:
+### تایپ ها می توانند ساختاری باشند
+در برخی از زبان ها (به خصوص اونایی که nominal هستند) نیازی به نوشتن تایپ ها به صورت static نیست چون حتی اگر  *شما بدونید* کد شما به درستی کار خواهد کرد، ساختار آن زبان شما را مجبور میکند که حتما تایپ آن را در کنارش وارد کنید. مثلا [automapper برای C#](http://automapper.org/) که برای آن ضروری است.در تایپ اسکریپت چون ما میخواهیم توسعه دهندگان جاوا اسکریپت کمترین دردسر را داشته باشند تایپ ها را به صورت *structural (ساختاری)* تعریف می کنیم. این بدین معناست که *duck typing* اولین ساختاری است که تعریف می شود. مثال پایین را در نظر بگیرید. تابع `iTakePoint2D` هر چیزی که شامل (`x` و `y`) می شود را قبول میکند:
 
 ```ts
 interface Point2D {
@@ -71,39 +72,39 @@ iTakePoint2D(point3D); // extra information okay
 iTakePoint2D({ x: 0 }); // Error: missing information `y`
 ```
 
-### Type errors do not prevent JavaScript emit
-To make it easy for you to migrate your JavaScript code to TypeScript, even if there are compilation errors, by default TypeScript *will emit valid JavaScript* the best that it can. e.g.
+### خطاهای Type از انتشار جاوا اسکریپت جلوگیری نمی کنند
+برای اینکه راحتتر بتوانید کدهای خودتان را از جاوا اسکریپت به تایپ اسکریپت منتقل کنید, حتی اگر خطاهای بسیاری هم داشته باشید, به صورت پیشفرض تایپ اسکریپت *کدهای جاوا اسکریپت را منتشر میکند*. برای نمونه.
 
 ```ts
 var foo = 123;
 foo = '456'; // Error: cannot assign a `string` to a `number`
 ```
 
-will emit the following js:
+کد جاوا اسکریپت پایین منتشر می شود:
 
 ```ts
 var foo = 123;
 foo = '456';
 ```
 
-So you can incrementally upgrade your JavaScript code to TypeScript. This is very different from how many other language compilers work and yet another reason to move to TypeScript.
+پس شما می توانید به صورت تدریجی کدهای جاوا اسکریپت خودتان را به تایپ اسکریپت تبدیل کنید. این با خیلی از زبان های برنامه نویسی دیگر متفاوت است، و این همان دلیلی است که ما را ترغیب میکند از تایپ اسکریپت استفاده کنیم.
 
-### Types can be ambient
-A major design goal of TypeScript was to make it possible for you to safely and easily use existing JavaScript libraries in TypeScript. TypeScript does this by means of *declaration*. TypeScript provides you with a sliding scale of how much or how little effort you want to put in your declarations, the more effort you put the more type safety + code intelligence you get. Note that definitions for most of the popular JavaScript libraries have already been written for you by the [DefinitelyTyped community](https://github.com/borisyankov/DefinitelyTyped) so for most purposes either:
+### تایپ ها میتوانند ambient (محیطی) باشند
+یکی از بزرگترین اهداف تایپ اسکریپت این بود که شما بتوانید به راحتی و امن از کتابخانه های جاوا اسکریپت در تایپ اسکریپت استفاده کنید. تایپ اسکریپت این کار را با مفهوم *declaration* انجام میدهد. تایپ اسکریپت این اجازه را به توسعه دهندگان می دهد که تعیین کنند چه مقدار  declaration را در کد خود انجام دهند, هر چه بیشتر تایپ در کد خود تعریف کنید امنیت بیشتری به دست می آورید. توجه داشته باشید که definitions برای بیشتر کتابخانه های جاوا اسکریپت نوشته شده اند [DefinitelyTyped community](https://github.com/borisyankov/DefinitelyTyped) پس مهمترین اهداف این کامیونیتی این است که:
 
-1. The definition file already exists.
-1. Or at the very least, you have a vast list of well reviewed TypeScript declaration templates already available
+1. فایل های definition که در حال حاضر موجود هستند را نمایش دهند.
+2. یا حداقل شما بتونید یه لیست بزرگی از declaration های تریف شده در تایپ اسکریپت را داشته باشید
 
-As a quick example of how you would author your own declaration file, consider a trivial example of [jquery](https://jquery.com/). By default (as is to be expected of good JS code) TypeScript expects you to declare (i.e. use `var` somewhere) before you use a variable
+ چطوری شما هم declaration فایل خود را بنویسید؟ یک مثال از [jquery](https://jquery.com/) را در نظر بگیرید . به صورت پیشفرض تایپ اسکریپت از شما انتظار دارد که  (برای نمونه یک `var` یه جایی) قبل از متغیر خود استفاده کنید.
 ```ts
 $('.awesome').show(); // Error: cannot find name `$`
 ```
-As a quick fix *you can tell TypeScript* that there is indeed something called `$`:
+به عنوان یک راه حل سریع *می تونیم به تایپ اسکریپت بگیم* که یه چیزی وجود دارد که ما `$` صداش میزنیم: 
 ```ts
 declare var $: any;
 $('.awesome').show(); // Okay!
 ```
-If you want you can build on this basic definition and provide more information to help protect you from errors:
+اگه شما بخواهید می توانید به تکه کد بالا موارد دیگری را هم اضافه کنید که باعث بشه در طول پروژه خطاهای معنادار و درستی به شما بدهد:
 ```ts
 declare var $: {
     (selector:string): any;
@@ -112,10 +113,11 @@ $('.awesome').show(); // Okay!
 $(123).show(); // Error: selector needs to be a string
 ```
 
-We will discuss the details of creating TypeScript definitions for existing JavaScript in detail later once you know more about TypeScript (e.g. stuff like `interface` and the `any`).
+وقتی بیشتر درباره تایپ اسکریپت یاد گرفتید ما این مبحث را به صورت مفصل تر برای شما بیان میکنیم (مثل چیزهایی شبیه به `interface` و `any`).
 
 ## Future JavaScript => Now
-TypeScript provides a number of features that are planned in ES6 for current JavaScript engines (that only support ES5 etc). The TypeScript team is actively adding these features and this list is only going to get bigger over time and we will cover this in its own section. But just as a specimen here is an example of a class:
+تایپ اسکریپت تعداد زیادی از ویژگی هایی که برای ES6 برای موتور جاوا اسکریپت برنامه ریزی شده است را نیز در اختیار ما قرار می دهد.
+تیم توسعه دهنده تایپ اسکریپت به صورت فعالانه در حال اضافه کردن این ویژگی ها به تایپ اسکریپت می باشند و این لیست دائما داره بزرگ و بزرگتر میشه. فقط یه نمونه از کلاس را می توانید اینجا ملاحظه کنید:
 
 ```ts
 class Point {
@@ -131,14 +133,15 @@ var p2 = new Point(10, 20);
 var p3 = p1.add(p2); // { x: 10, y: 30 }
 ```
 
-and the lovely fat arrow function:
+و همچنین برای arrow function:
 
 ```ts
 var inc = x => x+1;
 ```
 
-### Summary
-In this section we have provided you with the motivation and design goals of TypeScript. With this out of the way we can dig into the nitty gritty details of TypeScript.
+### جمع بندی
+در این قسمت از آموزش ما سعی کردیم بیشتر از انگیزه و اهداف ایجاد تایپ اسکریپت صحبت کنیم.
+با دانستن این مطالب ما میتونیم به جزئیات بیشتری از تایپ اسکریپت بپردازیم..
 
 [](Interfaces are open ended)
 [](Type Inference rules)
