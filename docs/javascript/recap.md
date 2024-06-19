@@ -1,21 +1,22 @@
-# Your JavaScript is TypeScript
+# جاوا اسکریپت شما همان تایپ اسکریپت است
 
-There were (and will continue to be) a lot of competitors in *Some syntax* to *JavaScript* compilers. TypeScript is different from them in that *Your JavaScript is TypeScript*. Here's a diagram:
+
+رقبای زیادی برای  *برخی از سینتکس های* کامپایلر *جاوا اسکریپت* وجود دارد و هر روز هم در حال زیاد شدن می باشد. اما تایپ اسکریپت با آن ها تفاوت داره به خاطر همین هست که میگیم *جاوا اسکریپت همان تایپ اسکریپت هست*. دیاگرام پایین را ملاحظه کنید:
 
 ![JavaScript is TypeScript](https://raw.githubusercontent.com/basarat/typescript-book/master/images/venn.png)
 
-However, it does mean that *you need to learn JavaScript* (the good news is *you **only** need to learn JavaScript*). TypeScript is just standardizing all the ways you provide *good documentation* on JavaScript.
+با این اوصاف شما باید *جاوا اسکریپت را یاد بگیرید* (خبر خوب هم همینه که  *شما **فقط** باید جاوا اسکریپت بلد باشید*). تایپ اسکریپت فقط راه و روش های جاوا اسکریپت را استاندارد سازی می کند که این باعث میشه شما یک *داکیومنت خوب* روی جاوا اسکریپت داشته باشید.
 
-* Just giving you a new syntax doesn't help catch bugs - but might help you write cleaner / less bugs (e.g. CoffeeScript).
-* Creating a new language abstracts you too far from your runtimes and communities - but might help on-board you easier if its an already familiar flavour (e.g. Dart - closer for Java / C# devs).
+* نوشتن سینتکس های جدید به شما در پیدا کردن باگ ها و مشکلات کمک نمی کنه - اما کمک می کنه که تمیزتر کد بزنید و این باعث کمتر شدن باگ ها می شود. (به عنران مثال CoffeeScript).
+* ساختن یا یادگرفتن یک زبان برنامه نویسی جدید هم باعث میشه که مدت زمان توسعه پروژه شما افزایش پیدا کنه همچنین اطلاعات زیادی از کامیونتی هایی که دارند نتونید پیدا کنید - اما اگه با اونا آشنایی داشته باشید راحتتر میتونید باهاشون کار کنید (مثلا Dart - که برای برنامه نویس های Java / C# آشنا هست).
 
-TypeScript is just JavaScript with docs.
+باز هم تکرار میکنم که تایپ اسکریپت همان جاوا اسکریپت با داکیومنت هست.
 
-> JSNext is open to interpretation - not everything proposed for the next version of JS actually makes it to browsers. TypeScript only adds support for proposals once they reach [stage 3](https://tc39.es/process-document/).
+>  توجه داشته باشید کهJSNext مفسر اوپن سورس است - که همه تغییراتی که توی ورژن های آن اعمال میشه به مرورگر نمی رسند برای همین تایپ اسکریپت فقط از تغییراتی پشتیبانی می کند که به [استیج 3] رسیده باشند. (https://tc39.es/process-document/).
 
-## Making JavaScript Better
+## بهتر کردن کدهای جاوا اسکریپت
 
-TypeScript will try to protect you from portions of JavaScript that never worked (so you don't need to remember this stuff):
+تایپ اسکریپت سعی می کند از شما در برابر بخش هایی از جاوا اسکریپت که هرگز کار نمی کند محافظت کند (پس شما نیاز ندارید هیچ وقت اونا را حفظ کنید یا به یاد داشته باشید):
 
 ```ts
 [] + []; // JavaScript will give you "" (which makes little sense), TypeScript will error
@@ -36,10 +37,10 @@ function add(a,b) {
 }
 ```
 
-Essentially TypeScript is linting JavaScript. Just doing a better job at it than other linters that don't have *type information*.
+اساسا تایپ اسکریپت هم جاوا اسکریپت را لینت میکند اما این کار را خیلی بهتر از بقیه که تایپ را پیشتبانی نمی کنند انجام می دهد.
 
-## You still need to learn JavaScript
+## شما هنوز هم باید جاوا اسکریپت یاد بگیرید
 
-That said TypeScript is very pragmatic about the fact that *you do write JavaScript* so there are some things about JavaScript that you still need to know in order to not be caught off-guard. Let's discuss them next.
+گفته میشه که تایپ اسکریپت بسیار عملگراست اما حقیقت اینه که *شما دارید جاوا اسکریپت می نویسید* پس هنوز چیزهایی وجود داره که شما باید بدونید تا غافلگیر نشید. بریم که تو درس های بعدی بیشتر راجبش صحبت کنیم.
 
-> Note: TypeScript is a superset of JavaScript. Just with documentation that can actually be used by compilers / IDEs ;)
+> نکته: تایپ اسکریپت یک بالاسری از جاوا اسکریپت هست که با داکیومنت هاش به کامپایلرها و IDEها کمک میکند ;)
